@@ -1,0 +1,16 @@
+1.	The total sum of all the staff's salaries
+SELECT (SUM(?y) as ?total_Incomes)
+WHERE {?x Hospital:hasPaymentAmount ?y }
+
+2.	Patient's name who are in critical condition
+SELECT ?doctor ?patient ?critical_patient_name
+WHERE { ?doctor rdf:type Hospital:Doctor;
+	Hospital:isEspeciallyInvolvedIn ?patient .
+	?patient Hospital:personHasName ?critical_patient_name }
+
+3.	Number of beds per wing
+Select ?wing (count(?bed) AS ?total_beds_per_wing)
+WHERE {?wing rdf:type Hospital:Wing;
+	Hospital:wingHasWard ?ward .
+	?ward  Hospital:wardHasRooms ?room .
+	?room Hospital:roomHasBeds ?bed}

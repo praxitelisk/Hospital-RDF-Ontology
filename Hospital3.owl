@@ -1,0 +1,2206 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:Hospital="http://www.owl-ontologies.com/Hospital.rdf#"
+  xml:base="http://www.owl-ontologies.com/Hospital.rdf">
+  <owl:Ontology rdf:about=""/>
+  <rdfs:Class rdf:ID="Doctor">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Doctors who work in this Hospital&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="Staff"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Department">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      The Hospital's Departments&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="Infrastructure"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Room">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#Infrastructure"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      The Hospital's Room that contains Beds&#xD; in order to hospitalize the patients
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Infrastructure">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      The Hospital's Infrastructure, with its basic subclasses.&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Salary">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="Expenditure"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Staff's Salaries expenditures&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Income">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Hospital's Income from Patients&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="Accounting"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="HistoryUpdate">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient's history update&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="History"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Wing">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      The Hospital's Wing, that contains Departments, Wards or both of them.&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#History">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient's medical History generic class&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Staff">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="Person"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The working staff in this Hospital&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Nurse">
+    <rdfs:subClassOf rdf:resource="#Staff"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Reception">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Generic class which contains all the appointments between doctors and &#xD;
+      patients&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Record">
+    <rdfs:subClassOf rdf:resource="#History"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Each Patient History record&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Accounting">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Hospital Accounting information&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Ward">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      The Hospital Ward, that contains Room for the patients' healing&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="MiscellaneousOrder">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Hospital Miscellaneous Orders from Departments&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#Expenditure"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Prescription">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      common prescription instructions&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#History"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Bed">
+    <rdfs:subClassOf rdf:resource="#Infrastructure"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      The Hospital's beds that contains informations about the bed&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Appointment">
+    <rdfs:subClassOf rdf:resource="#Reception"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Patient">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#Person"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      People who are being hospitalized inside the Hospital&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Expenditure">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Hospital expenditure information&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Accounting"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Person">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      People who work or are being hospitalized in this Hospital&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:ID="hasHistoryRecID">
+    <rdfs:comment xml:lang="en">History Rec ID identifier</rdfs:comment>
+    <rdfs:domain rdf:resource="#Record"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="wingHasWard">
+    <rdfs:domain rdf:resource="#Wing"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Which Wards are in this wing&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="#Ward"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="givenPillName">
+    <rdfs:domain rdf:resource="#Prescription"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      given pill name&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="wardHasRooms">
+    <rdfs:domain rdf:resource="#Ward"/>
+    <rdfs:range rdf:resource="#Room"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The number of rooms in a Ward&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAffiliatedDepartment">
+    <rdfs:range rdf:resource="#Department"/>
+    <rdfs:domain rdf:resource="#MiscellaneousOrder"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The Depart. who made all these expenses&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="personHasPhone">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Person"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Person's phone&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="personHasID">
+    <rdfs:domain rdf:resource="#Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The ID identifier for patient or staff inside the Hospital&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAppointedDate">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      date and time of the appointment&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Appointment"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAffiliatedPatient">
+    <rdfs:comment xml:lang="en">patient ID ref</rdfs:comment>
+    <rdfs:domain rdf:resource="#Record"/>
+    <rdfs:range rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasTotalBill">
+    <rdfs:domain rdf:resource="#Income"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasOrderDate">
+    <rdfs:domain rdf:resource="#MiscellaneousOrder"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      when does these expenses were made&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAffiliatedStaff">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Staff who get paid&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Salary"/>
+    <rdfs:range rdf:resource="#Staff"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="worksIn">
+    <rdfs:range rdf:resource="#Department"/>
+    <rdfs:domain rdf:resource="#Staff"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="departmentHasName">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Department's Name&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Department"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientAge">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient's age&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="bedHasSize">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      How comfortable is this bed, 1-worse to 3-best&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Bed"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientHasAnAssignedBed">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient's assigned Bed&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="#Bed"/>
+    <rdfs:domain rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="isPatientType">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient type; inPatient: Patient who is already inside the Hospital, &#xD;
+      outPatient, past Patient, now healthy, visitPatient: future patient who &#xD;
+      will visit the Hospital in the near future.&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasTotalCost">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#MiscellaneousOrder"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      the amount &#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAffiliatedDepart">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The department where the History Update took place&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#HistoryUpdate"/>
+    <rdfs:range rdf:resource="#Department"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="isInvolvedIn">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Staff who are involved in a patient's treatment&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Staff"/>
+    <rdfs:range rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientIsAttendedBy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Doctor who attend the Patient&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="#Doctor"/>
+    <rdfs:domain rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasBilledPatient">
+    <rdfs:domain rdf:resource="#Income"/>
+    <rdfs:range rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAffiliateDoctor">
+    <rdfs:domain rdf:resource="#HistoryUpdate"/>
+    <rdfs:range rdf:resource="#Doctor"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The doctor who updated the patient's History&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="isEspeciallyTreats">
+    <rdfs:domain rdf:resource="#Nurse"/>
+    <rdfs:range rdf:resource="#Patient"/>
+    <rdfs:subPropertyOf rdf:resource="#isInvolvedIn"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="wingHasDepartment">
+    <rdfs:range rdf:resource="#Department"/>
+    <rdfs:domain rdf:resource="#Wing"/>
+    <rdfs:comment xml:lang="en">Which Departments are in this Wing</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="personHasAddress">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasHistoryUpdateID">
+    <rdfs:domain rdf:resource="#HistoryUpdate"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      unique HistoryUpdate identifier&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasUpdateDate">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      date and time of this update entry&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#HistoryUpdate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="nurseInspectWard">
+    <rdfs:domain rdf:resource="#Nurse"/>
+    <rdfs:range rdf:resource="#Ward"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAppointedDoctor">
+    <rdfs:domain rdf:resource="#Appointment"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Doctor who will take place in this appointment&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="#Doctor"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAccountID">
+    <rdfs:domain rdf:resource="#Accounting"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasSpeciality">
+    <rdfs:domain rdf:resource="#Doctor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasMedicalCase">
+    <rdfs:domain rdf:resource="#HistoryUpdate"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      patient's illness&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientWeight">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Patient"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      patient's weight&#xD; in kg
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAppointmentID">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Unique Appointment ID identifier&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Appointment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="infrastructureHasID">
+    <rdfs:domain rdf:resource="#Infrastructure"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      ID identifier for all Infrastructure instances and subclass instances&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasPaymentAmount">
+    <rdfs:domain rdf:resource="#Salary"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="roomHasBeds">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Which beds does this room have.&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Room"/>
+    <rdfs:range rdf:resource="#Bed"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="isEspeciallyInvolvedIn">
+    <rdfs:domain rdf:resource="#Doctor"/>
+    <rdfs:range rdf:resource="#Patient"/>
+    <rdfs:subPropertyOf rdf:resource="#isInvolvedIn"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="departmentUseWard">
+    <rdfs:range rdf:resource="#Ward"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Which Wards does this Department use.&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Department"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="personHasName">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The name for every person, patient or staff in this Hospital&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="headOfDept">
+    <rdfs:range rdf:resource="#Department"/>
+    <rdfs:domain rdf:resource="#Doctor"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="currentPatientState">
+    <rdfs:domain rdf:resource="#Record"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The patient's health state&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientGender">
+    <rdfs:domain rdf:resource="#Patient"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient's gender&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasPrescription">
+    <rdfs:domain rdf:resource="#HistoryUpdate"/>
+    <rdfs:range rdf:resource="#Prescription"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Prescription instructions given by the afilliated doctor&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="givenInstructions">
+    <rdfs:domain rdf:resource="#Prescription"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      simple given instruction to follow by the afilliated doctor&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasAppointedPatient">
+    <rdfs:range rdf:resource="#Patient"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient who will took place in this appointment&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Appointment"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasHistoryUpdates">
+    <rdfs:domain rdf:resource="#Record"/>
+    <rdfs:comment xml:lang="en">All the History Record Updates</rdfs:comment>
+    <rdfs:range rdf:resource="#HistoryUpdate"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientIsAttendedIn">
+    <rdfs:domain rdf:resource="#Patient"/>
+    <rdfs:range rdf:resource="#Department"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Department that a patient is attended in&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="theDoctorComments">
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      some doctor comments about the patient's state&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#HistoryUpdate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="roomHasSize">
+    <rdfs:domain rdf:resource="#Room"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      The Size of this Room which is the number of beds&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientDateAdmitted">
+    <rdfs:domain rdf:resource="#Patient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient's date addmitted&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasRelantionshipType">
+    <rdfs:domain rdf:resource="#Doctor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="patientDateDischarged">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Patient's date discharged&#xD;
+    &lt;/p&gt;</rdfs:comment>
+    <rdfs:domain rdf:resource="#Patient"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="departmentHasPhone">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Department"/>
+    <rdfs:comment xml:lang="en">&lt;p style="margin-top: 0"&gt;&#xD;
+      Department's phone&#xD;
+    &lt;/p&gt;</rdfs:comment>
+  </rdf:Property>
+  <Hospital:Salary rdf:ID="Salary138">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor118">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >621 Ridge Avenue Elkhart, IN 46514	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Barbara Scott	</Hospital:personHasName>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Microbiologist</Hospital:hasSpeciality>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0134	</Hospital:personHasPhone>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor118</Hospital:personHasID>
+        <Hospital:headOfDept>
+          <Hospital:Department rdf:ID="_Microbiology">
+            <Hospital:departmentHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Microbiology</Hospital:departmentHasName>
+            <Hospital:departmentHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0189</Hospital:departmentHasPhone>
+          </Hospital:Department>
+        </Hospital:headOfDept>
+        <Hospital:worksIn rdf:resource="#_Microbiology"/>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary138</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Bed rdf:ID="Wing102Ward102Room103Bed102">
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing102Ward102Room103Bed102</Hospital:infrastructureHasID>
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >2</Hospital:bedHasSize>
+  </Hospital:Bed>
+  <Hospital:Appointment rdf:ID="Appointment101">
+    <Hospital:hasAppointedDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2015-10-29T09:00:00</Hospital:hasAppointedDate>
+    <Hospital:hasAppointmentID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Appointment101</Hospital:hasAppointmentID>
+    <Hospital:hasAppointedDoctor>
+      <Hospital:Doctor rdf:ID="Doctor101">
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0168</Hospital:personHasPhone>
+        <Hospital:isInvolvedIn>
+          <Hospital:Patient rdf:ID="Patient101">
+            <Hospital:patientIsAttendedIn>
+              <Hospital:Department rdf:ID="_Nephrology">
+                <Hospital:departmentHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >202-555-0199</Hospital:departmentHasPhone>
+                <Hospital:departmentUseWard>
+                  <Hospital:Ward rdf:ID="Wing101Ward101">
+                    <Hospital:infrastructureHasID rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >Wing101Ward101</Hospital:infrastructureHasID>
+                    <Hospital:wardHasRooms>
+                      <Hospital:Room rdf:ID="Wing101Ward101Room101">
+                        <Hospital:roomHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >3</Hospital:roomHasSize>
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing101Ward101Room101</Hospital:infrastructureHasID>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room101Bed101">
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >1</Hospital:bedHasSize>
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room101Bed101</Hospital:infrastructureHasID>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room101Bed103">
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >1</Hospital:bedHasSize>
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room101Bed103</Hospital:infrastructureHasID>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room101Bed102">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room101Bed102</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                      </Hospital:Room>
+                    </Hospital:wardHasRooms>
+                    <Hospital:wardHasRooms>
+                      <Hospital:Room rdf:ID="Wing101Ward101Room102">
+                        <Hospital:roomHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >3</Hospital:roomHasSize>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room102Bed101">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room102Bed101</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >1</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room102Bed102">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room102Bed102</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room102Bed103">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room102Bed103</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing101Ward101Room102</Hospital:infrastructureHasID>
+                      </Hospital:Room>
+                    </Hospital:wardHasRooms>
+                    <Hospital:wardHasRooms>
+                      <Hospital:Room rdf:ID="Wing101Ward101Room103">
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing101Ward101Room103</Hospital:infrastructureHasID>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room103Bed101">
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >1</Hospital:bedHasSize>
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room103Bed101</Hospital:infrastructureHasID>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room103Bed106">
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room103Bed106</Hospital:infrastructureHasID>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room103Bed104">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room103Bed104</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >1</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room103Bed105">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room103Bed105</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room103Bed102">
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room103Bed102</Hospital:infrastructureHasID>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing101Ward101Room103Bed103">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing101Ward101Room103Bed103</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >6</Hospital:roomHasSize>
+                      </Hospital:Room>
+                    </Hospital:wardHasRooms>
+                  </Hospital:Ward>
+                </Hospital:departmentUseWard>
+                <Hospital:departmentHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Nephrology</Hospital:departmentHasName>
+                <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >_Nephrology</Hospital:infrastructureHasID>
+              </Hospital:Department>
+            </Hospital:patientIsAttendedIn>
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Angela Washington	</Hospital:personHasName>
+            <Hospital:patientIsAttendedBy rdf:resource="#Doctor101"/>
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient101</Hospital:personHasID>
+            <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >80kg</Hospital:patientWeight>
+            <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >567 Walnut Avenue Spring Hill, FL 34608	</Hospital:personHasAddress>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >InPatient</Hospital:isPatientType>
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0168	</Hospital:personHasPhone>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >44</Hospital:patientAge>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Female</Hospital:patientGender>
+            <Hospital:patientHasAnAssignedBed rdf:resource="#Wing101Ward101Room101Bed101"/>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-11-01</Hospital:patientDateAdmitted>
+          </Hospital:Patient>
+        </Hospital:isInvolvedIn>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Priscilla Arnold	</Hospital:personHasName>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Trainee</Hospital:hasRelantionshipType>
+        <Hospital:worksIn rdf:resource="#_Nephrology"/>
+        <Hospital:isEspeciallyInvolvedIn>
+          <Hospital:Patient rdf:ID="Patient102">
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient102</Hospital:personHasID>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-11-01</Hospital:patientDateAdmitted>
+            <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >75Kg</Hospital:patientWeight>
+            <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >549 Inverness Drive Libertyville, IL 60048	</Hospital:personHasAddress>
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0111	</Hospital:personHasPhone>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Female</Hospital:patientGender>
+            <Hospital:patientHasAnAssignedBed>
+              <Hospital:Bed rdf:ID="Wing103Ward101Room101Bed101">
+                <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Wing103Ward101Room101Bed101</Hospital:infrastructureHasID>
+                <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                >2</Hospital:bedHasSize>
+              </Hospital:Bed>
+            </Hospital:patientHasAnAssignedBed>
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Diana Foster	</Hospital:personHasName>
+            <Hospital:patientIsAttendedBy>
+              <Hospital:Doctor rdf:ID="Doctor108">
+                <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Cardiologist</Hospital:hasSpeciality>
+                <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Doctor108</Hospital:personHasID>
+                <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Permanent</Hospital:hasRelantionshipType>
+                <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Fred Hill	</Hospital:personHasName>
+                <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >374 Westminster Drive Florence, SC 29501	</Hospital:personHasAddress>
+                <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >202-555-0111	</Hospital:personHasPhone>
+                <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >202-555-0190	</Hospital:personHasPhone>
+                <Hospital:worksIn>
+                  <Hospital:Department rdf:ID="_Cardiology">
+                    <Hospital:departmentHasName rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >Cardiology</Hospital:departmentHasName>
+                    <Hospital:departmentUseWard>
+                      <Hospital:Ward rdf:ID="Wing103Ward101">
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing103Ward101</Hospital:infrastructureHasID>
+                        <Hospital:wardHasRooms>
+                          <Hospital:Room rdf:ID="Wing103Ward101Room101">
+                            <Hospital:roomHasBeds rdf:resource="#Wing103Ward101Room101Bed101"/>
+                            <Hospital:roomHasBeds>
+                              <Hospital:Bed rdf:ID="Wing103Ward101Room101Bed102">
+                                <Hospital:infrastructureHasID
+                                 rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                >Wing103Ward101Room101Bed102</Hospital:infrastructureHasID>
+                                <Hospital:bedHasSize rdf:datatype=
+                                "http://www.w3.org/2001/XMLSchema#int"
+                                >2</Hospital:bedHasSize>
+                              </Hospital:Bed>
+                            </Hospital:roomHasBeds>
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing103Ward101Room101</Hospital:infrastructureHasID>
+                            <Hospital:roomHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:roomHasSize>
+                          </Hospital:Room>
+                        </Hospital:wardHasRooms>
+                      </Hospital:Ward>
+                    </Hospital:departmentUseWard>
+                    <Hospital:infrastructureHasID rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >_Cardiology</Hospital:infrastructureHasID>
+                    <Hospital:departmentHasPhone rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >202-555-0168</Hospital:departmentHasPhone>
+                  </Hospital:Department>
+                </Hospital:worksIn>
+              </Hospital:Doctor>
+            </Hospital:patientIsAttendedBy>
+            <Hospital:patientIsAttendedIn rdf:resource="#_Cardiology"/>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >InPatient</Hospital:isPatientType>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</Hospital:patientAge>
+          </Hospital:Patient>
+        </Hospital:isEspeciallyInvolvedIn>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >326 Willow Street Rowlett, TX 75088</Hospital:personHasAddress>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor101</Hospital:personHasID>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nephrologist</Hospital:hasSpeciality>
+        <Hospital:isEspeciallyInvolvedIn>
+          <Hospital:Patient rdf:ID="Patient105">
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0149	</Hospital:personHasPhone>
+            <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >84kg</Hospital:patientWeight>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >InPatient</Hospital:isPatientType>
+            <Hospital:patientHasAnAssignedBed>
+              <Hospital:Bed rdf:ID="Wing103Ward102Room102Bed103">
+                <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                >2</Hospital:bedHasSize>
+                <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Wing103Ward102Room102Bed103</Hospital:infrastructureHasID>
+              </Hospital:Bed>
+            </Hospital:patientHasAnAssignedBed>
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Alan Bailey	</Hospital:personHasName>
+            <Hospital:patientIsAttendedIn>
+              <Hospital:Department rdf:ID="_General_Surgery">
+                <Hospital:departmentUseWard>
+                  <Hospital:Ward rdf:ID="Wing103Ward102">
+                    <Hospital:infrastructureHasID rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >Wing103Ward102</Hospital:infrastructureHasID>
+                    <Hospital:wardHasRooms>
+                      <Hospital:Room rdf:ID="Wing103Ward102Room102">
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing103Ward102Room102Bed101">
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing103Ward102Room102Bed101</Hospital:infrastructureHasID>
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >1</Hospital:bedHasSize>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:roomHasBeds rdf:resource="#Wing103Ward102Room102Bed103"/>
+                        <Hospital:roomHasBeds>
+                          <Hospital:Bed rdf:ID="Wing103Ward102Room102Bed102">
+                            <Hospital:bedHasSize rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#int"
+                            >2</Hospital:bedHasSize>
+                            <Hospital:infrastructureHasID rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >Wing103Ward102Room102Bed102</Hospital:infrastructureHasID>
+                          </Hospital:Bed>
+                        </Hospital:roomHasBeds>
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing103Ward102Room102</Hospital:infrastructureHasID>
+                        <Hospital:roomHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >0</Hospital:roomHasSize>
+                      </Hospital:Room>
+                    </Hospital:wardHasRooms>
+                  </Hospital:Ward>
+                </Hospital:departmentUseWard>
+                <Hospital:departmentHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >202-555-0101</Hospital:departmentHasPhone>
+                <Hospital:departmentHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >General Surgery</Hospital:departmentHasName>
+              </Hospital:Department>
+            </Hospital:patientIsAttendedIn>
+            <Hospital:patientIsAttendedBy>
+              <Hospital:Doctor rdf:ID="Doctor111">
+                <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Samuel Gonzalez	</Hospital:personHasName>
+                <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Permanent</Hospital:hasRelantionshipType>
+                <Hospital:worksIn rdf:resource="#_General_Surgery"/>
+                <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Doctor111</Hospital:personHasID>
+                <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >79 North Street Mishawaka, IN 46544	</Hospital:personHasAddress>
+                <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Surgerist</Hospital:hasSpeciality>
+                <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >202-555-0186	</Hospital:personHasPhone>
+                <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >202-555-0170	</Hospital:personHasPhone>
+              </Hospital:Doctor>
+            </Hospital:patientIsAttendedBy>
+            <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >768 Park Drive Burbank, IL 60459	</Hospital:personHasAddress>
+            <Hospital:patientDateDischarged rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-06-01</Hospital:patientDateDischarged>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Male</Hospital:patientGender>
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient105</Hospital:personHasID>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >33</Hospital:patientAge>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-05-01</Hospital:patientDateAdmitted>
+          </Hospital:Patient>
+        </Hospital:isEspeciallyInvolvedIn>
+        <Hospital:isEspeciallyInvolvedIn>
+          <Hospital:Patient rdf:ID="Patient106">
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Ronald Torres	</Hospital:personHasName>
+            <Hospital:patientIsAttendedIn rdf:resource="#_General_Surgery"/>
+            <Hospital:patientIsAttendedBy rdf:resource="#Doctor111"/>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >OutPatient</Hospital:isPatientType>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Male</Hospital:patientGender>
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient106</Hospital:personHasID>
+            <Hospital:patientDateDischarged rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-08-06</Hospital:patientDateDischarged>
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0168	</Hospital:personHasPhone>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >41</Hospital:patientAge>
+            <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >240 Warren Avenue West Bloomfield, MI 48322	</Hospital:personHasAddress>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-06-06</Hospital:patientDateAdmitted>
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0199	</Hospital:personHasPhone>
+            <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >91Kg</Hospital:patientWeight>
+          </Hospital:Patient>
+        </Hospital:isEspeciallyInvolvedIn>
+      </Hospital:Doctor>
+    </Hospital:hasAppointedDoctor>
+    <Hospital:hasAppointedPatient rdf:resource="#Patient101"/>
+  </Hospital:Appointment>
+  <Hospital:Salary rdf:ID="Salary124">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse108">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >871 Roosevelt Avenue Flint, MI 48504	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Donald Cook	</Hospital:personHasName>
+        <Hospital:worksIn rdf:resource="#_Cardiology"/>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse108</Hospital:personHasID>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0152	</Hospital:personHasPhone>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary124</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Bed rdf:ID="Wing102Ward102Room103Bed101">
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >2</Hospital:bedHasSize>
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing102Ward102Room103Bed101</Hospital:infrastructureHasID>
+  </Hospital:Bed>
+  <Hospital:Salary rdf:ID="Salary137">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor117">
+        <Hospital:headOfDept rdf:resource="#_Nephrology"/>
+        <Hospital:worksIn rdf:resource="#_Nephrology"/>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Dennis Young	</Hospital:personHasName>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor117</Hospital:personHasID>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0128	</Hospital:personHasPhone>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >986 Lexington Court Tacoma, WA 98444	</Hospital:personHasAddress>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0144	</Hospital:personHasPhone>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nephrologist</Hospital:hasSpeciality>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1500.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary137</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Patient rdf:ID="Patient109">
+    <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Female</Hospital:patientGender>
+    <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >69kg</Hospital:patientWeight>
+    <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >InPatient</Hospital:isPatientType>
+    <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >247 Orange Street Aliquippa, PA 15001	</Hospital:personHasAddress>
+    <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2015-12-02</Hospital:patientDateAdmitted>
+    <Hospital:patientIsAttendedBy>
+      <Hospital:Doctor rdf:ID="Doctor107">
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Anne Griffin	</Hospital:personHasName>
+        <Hospital:worksIn>
+          <Hospital:Department rdf:ID="_Oncology">
+            <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >_Oncology</Hospital:infrastructureHasID>
+            <Hospital:departmentUseWard>
+              <Hospital:Ward rdf:ID="Wing102Ward102">
+                <Hospital:wardHasRooms>
+                  <Hospital:Room rdf:ID="Wing102Ward102Room101">
+                    <Hospital:roomHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >3</Hospital:roomHasSize>
+                    <Hospital:roomHasBeds>
+                      <Hospital:Bed rdf:ID="Wing102Ward102Room101Bed101">
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing102Ward102Room101Bed101</Hospital:infrastructureHasID>
+                        <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >1</Hospital:bedHasSize>
+                      </Hospital:Bed>
+                    </Hospital:roomHasBeds>
+                    <Hospital:roomHasBeds>
+                      <Hospital:Bed rdf:ID="Wing102Ward102Room101Bed102">
+                        <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >1</Hospital:bedHasSize>
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing102Ward102Room101Bed102</Hospital:infrastructureHasID>
+                      </Hospital:Bed>
+                    </Hospital:roomHasBeds>
+                    <Hospital:roomHasBeds>
+                      <Hospital:Bed rdf:ID="Wing102Ward102Room101Bed103">
+                        <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >1</Hospital:bedHasSize>
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >ing102Ward102Room101Bed103</Hospital:infrastructureHasID>
+                      </Hospital:Bed>
+                    </Hospital:roomHasBeds>
+                    <Hospital:infrastructureHasID rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >Wing102Ward102Room101</Hospital:infrastructureHasID>
+                  </Hospital:Room>
+                </Hospital:wardHasRooms>
+                <Hospital:wardHasRooms>
+                  <Hospital:Room rdf:ID="Wing102Ward102Room102">
+                    <Hospital:roomHasBeds>
+                      <Hospital:Bed rdf:ID="Wing102Ward102Room102Bed101">
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >Wing102Ward102Room102Bed101</Hospital:infrastructureHasID>
+                        <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >1</Hospital:bedHasSize>
+                      </Hospital:Bed>
+                    </Hospital:roomHasBeds>
+                    <Hospital:roomHasBeds>
+                      <Hospital:Bed rdf:ID="Wing102Ward102Room102Bed102">
+                        <Hospital:infrastructureHasID rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#string"
+                        >ing102Ward102Room102Bed102</Hospital:infrastructureHasID>
+                        <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >1</Hospital:bedHasSize>
+                      </Hospital:Bed>
+                    </Hospital:roomHasBeds>
+                    <Hospital:roomHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >2</Hospital:roomHasSize>
+                    <Hospital:infrastructureHasID rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >Wing102Ward102Room102</Hospital:infrastructureHasID>
+                  </Hospital:Room>
+                </Hospital:wardHasRooms>
+                <Hospital:wardHasRooms>
+                  <Hospital:Room rdf:ID="Wing102Ward102Room103">
+                    <Hospital:roomHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >5</Hospital:roomHasSize>
+                    <Hospital:infrastructureHasID rdf:datatype=
+                    "http://www.w3.org/2001/XMLSchema#string"
+                    >Wing102Ward102Room103</Hospital:infrastructureHasID>
+                    <Hospital:roomHasBeds rdf:resource="#Wing101Ward101Room103Bed101"/>
+                    <Hospital:roomHasBeds rdf:resource="#Wing101Ward101Room103Bed104"/>
+                    <Hospital:roomHasBeds rdf:resource="#Wing101Ward101Room103Bed105"/>
+                    <Hospital:roomHasBeds rdf:resource="#Wing101Ward101Room103Bed102"/>
+                    <Hospital:roomHasBeds rdf:resource="#Wing101Ward101Room103Bed103"/>
+                  </Hospital:Room>
+                </Hospital:wardHasRooms>
+                <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >Wing102Ward102</Hospital:infrastructureHasID>
+              </Hospital:Ward>
+            </Hospital:departmentUseWard>
+            <Hospital:departmentHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0100</Hospital:departmentHasPhone>
+            <Hospital:departmentHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Oncology</Hospital:departmentHasName>
+          </Hospital:Department>
+        </Hospital:worksIn>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0105	</Hospital:personHasPhone>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >755 Front Street South Vincentown, NJ 08088	</Hospital:personHasAddress>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Oncologist</Hospital:hasSpeciality>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Trainee</Hospital:hasRelantionshipType>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor107</Hospital:personHasID>
+      </Hospital:Doctor>
+    </Hospital:patientIsAttendedBy>
+    <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Patient109</Hospital:personHasID>
+    <Hospital:patientIsAttendedIn rdf:resource="#_Oncology"/>
+    <Hospital:patientHasAnAssignedBed rdf:resource="#Wing102Ward102Room101Bed102"/>
+    <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >202-555-0139	</Hospital:personHasPhone>
+    <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >44</Hospital:patientAge>
+    <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bertha Bradley	</Hospital:personHasName>
+  </Hospital:Patient>
+  <Hospital:Salary rdf:ID="Salary123">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse107">
+        <Hospital:worksIn rdf:resource="#_Cardiology"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >593 Elm Street Chesapeake, VA 23320	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Andrew Gray	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0153	</Hospital:personHasPhone>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse107</Hospital:personHasID>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Bed rdf:ID="Wing102Ward102Room103Bed104">
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing102Ward102Room103Bed104</Hospital:infrastructureHasID>
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >2</Hospital:bedHasSize>
+  </Hospital:Bed>
+  <Hospital:Salary rdf:ID="Salary121">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse105">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse105</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Stephen Howard	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0102	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_Oncology"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >564 Washington Avenue Venice, FL 34293	</Hospital:personHasAddress>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary121</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary122">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary122</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse106">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse106</Hospital:personHasID>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0118	</Hospital:personHasPhone>
+        <Hospital:nurseInspectWard rdf:resource="#Wing102Ward102"/>
+        <Hospital:worksIn rdf:resource="#_Oncology"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >61 Oak Avenue Tacoma, WA 98444	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Joan Scott	</Hospital:personHasName>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary112">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary112</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor112">
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0104	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_General_Surgery"/>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >973 Manor Drive Mcdonough, GA 30252	</Hospital:personHasAddress>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Surgerist</Hospital:hasSpeciality>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor112</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Phillip Nelson	</Hospital:personHasName>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary139">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary139</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor119">
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor119</Hospital:personHasID>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Oncologist</Hospital:hasSpeciality>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0187	</Hospital:personHasPhone>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >15 College Avenue Great Falls, MT 59404	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_Oncology"/>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Frank Murphy	</Hospital:personHasName>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary110">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary110</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor110">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >900 York Road Newark, NJ 07103	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Louise Garcia	</Hospital:personHasName>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor110</Hospital:personHasID>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Cardiologist</Hospital:hasSpeciality>
+        <Hospital:worksIn rdf:resource="#_Cardiology"/>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0120	</Hospital:personHasPhone>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Visiting</Hospital:hasRelantionshipType>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Bed rdf:ID="Wing102Ward102Room103Bed103">
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing102Ward102Room103Bed103</Hospital:infrastructureHasID>
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >2</Hospital:bedHasSize>
+  </Hospital:Bed>
+  <Hospital:Salary rdf:ID="Salary120">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse104">
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Margaret Martin	</Hospital:personHasName>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >564 5th Street South Clinton, MD 20735	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_Nephrology"/>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0113		</Hospital:personHasPhone>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse104</Hospital:personHasID>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary120</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary109">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor109">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >418 Belmont Avenue Canyon Country, CA 91387	</Hospital:personHasAddress>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Trainee</Hospital:hasRelantionshipType>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor109</Hospital:personHasID>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Cardiologist</Hospital:hasSpeciality>
+        <Hospital:worksIn rdf:resource="#_Cardiology"/>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Terry Thomas	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0135	</Hospital:personHasPhone>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary109</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Appointment rdf:ID="Appointment102">
+    <Hospital:hasAppointedDoctor>
+      <Hospital:Doctor rdf:ID="Doctor104">
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Marlon Carpenter	</Hospital:personHasName>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor104</Hospital:personHasID>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >146 Route 9 Media, PA 19063	</Hospital:personHasAddress>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0144	</Hospital:personHasPhone>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0199	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_Microbiology"/>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Microbiologist</Hospital:hasSpeciality>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+      </Hospital:Doctor>
+    </Hospital:hasAppointedDoctor>
+    <Hospital:hasAppointmentID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Appointment102</Hospital:hasAppointmentID>
+    <Hospital:hasAppointedDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2015-10-01T09:00:00</Hospital:hasAppointedDate>
+    <Hospital:hasAppointedPatient rdf:resource="#Patient105"/>
+  </Hospital:Appointment>
+  <Hospital:Bed rdf:ID="Wing103Ward102Room101Bed101">
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >1</Hospital:bedHasSize>
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing103Ward102Room101Bed101</Hospital:infrastructureHasID>
+  </Hospital:Bed>
+  <Hospital:Salary rdf:ID="Salary111">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary111</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff rdf:resource="#Doctor111"/>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary134">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary134</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse118">
+        <Hospital:worksIn rdf:resource="#_Cardiology"/>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Fred Hill	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0148	</Hospital:personHasPhone>
+        <Hospital:nurseInspectWard rdf:resource="#Wing103Ward101"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >241 York Street Torrington, CT 06790	</Hospital:personHasAddress>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse118</Hospital:personHasID>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Bed rdf:ID="Wing103Ward102Room101Bed102">
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >2</Hospital:bedHasSize>
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing103Ward102Room101Bed102</Hospital:infrastructureHasID>
+  </Hospital:Bed>
+  <Hospital:Salary rdf:ID="Salary114">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor114">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >577 13th Street Chesterfield, VA 23832	</Hospital:personHasAddress>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor114</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Janice Williams	</Hospital:personHasName>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >General Doctor</Hospital:hasSpeciality>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0198	</Hospital:personHasPhone>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:worksIn>
+          <Hospital:Department rdf:ID="_Walk_in_Clinic">
+            <Hospital:departmentHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Walk In Clinic</Hospital:departmentHasName>
+            <Hospital:departmentHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0154</Hospital:departmentHasPhone>
+            <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >_Walk_in_Clinic</Hospital:infrastructureHasID>
+          </Hospital:Department>
+        </Hospital:worksIn>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary114</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary108">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary108</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff rdf:resource="#Doctor108"/>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary128">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse112">
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0145	</Hospital:personHasPhone>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse112</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Marilyn Adams	</Hospital:personHasName>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >444 Taylor Street Shelton, CT 06484	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_Walk_in_Clinic"/>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary128</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary133">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse117">
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0142	</Hospital:personHasPhone>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >198 Willow Street Homestead, FL 33030	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_Oncology"/>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse117</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nancy Taylor	</Hospital:personHasName>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary133</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary132">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1800.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse116">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse116</Hospital:personHasID>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >488 Route 44 Roy, UT 84067	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Green Terrance</Hospital:personHasName>
+        <Hospital:worksIn rdf:resource="#_Walk_in_Clinic"/>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0114	</Hospital:personHasPhone>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary132</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Bed rdf:ID="Wing103Ward102Room101Bed103">
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing103Ward102Room101Bed103</Hospital:infrastructureHasID>
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >1</Hospital:bedHasSize>
+  </Hospital:Bed>
+  <Hospital:Salary rdf:ID="Salary107">
+    <Hospital:hasAffiliatedStaff rdf:resource="#Doctor107"/>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary107</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1500.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary113">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor113">
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:worksIn rdf:resource="#_Walk_in_Clinic"/>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0166	</Hospital:personHasPhone>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >830 Ashley Court Evansville, IN 47711	</Hospital:personHasAddress>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >General Doctor</Hospital:hasSpeciality>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Kathleen Perry	</Hospital:personHasName>
+        <Hospital:headOfDept rdf:resource="#_Walk_in_Clinic"/>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor113</Hospital:personHasID>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0155	</Hospital:personHasPhone>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary113</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary127">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse111">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse111</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Deborah Moore	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0180	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_Walk_in_Clinic"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >493 Broadway New Castle, PA 16101	</Hospital:personHasAddress>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary127</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary136">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse120">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse120</Hospital:personHasID>
+        <Hospital:worksIn rdf:resource="#_General_Surgery"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >141 Cemetery Road Hickory, NC 28601	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Melissa Barnes	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0166	</Hospital:personHasPhone>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary136</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Wing rdf:ID="Wing102">
+    <Hospital:wingHasDepartment rdf:resource="#_Oncology"/>
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing102	</Hospital:infrastructureHasID>
+    <Hospital:wingHasWard rdf:resource="#Wing102Ward102"/>
+  </Hospital:Wing>
+  <Hospital:Record rdf:ID="Record101">
+    <Hospital:hasHistoryRecID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Record101</Hospital:hasHistoryRecID>
+    <Hospital:hasAffiliatedPatient rdf:resource="#Patient101"/>
+    <Hospital:currentPatientState rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Good</Hospital:currentPatientState>
+    <Hospital:hasHistoryUpdates>
+      <Hospital:HistoryUpdate rdf:ID="HistoryUpdate101">
+        <Hospital:hasUpdateDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+        >2015-10-01T09:00:00</Hospital:hasUpdateDate>
+        <Hospital:hasAffiliateDoctor rdf:resource="#Doctor101"/>
+        <Hospital:hasPrescription>
+          <Hospital:Prescription rdf:ID="Prescription_1">
+            <Hospital:givenPillName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Depon</Hospital:givenPillName>
+            <Hospital:givenInstructions rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >1_per_day</Hospital:givenInstructions>
+          </Hospital:Prescription>
+        </Hospital:hasPrescription>
+        <Hospital:hasHistoryUpdateID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >HistoryUpdate101</Hospital:hasHistoryUpdateID>
+        <Hospital:hasMedicalCase rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Kidney stones</Hospital:hasMedicalCase>
+        <Hospital:hasAffiliatedDepart rdf:resource="#_Nephrology"/>
+        <Hospital:theDoctorComments rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >He is better than yesterday</Hospital:theDoctorComments>
+      </Hospital:HistoryUpdate>
+    </Hospital:hasHistoryUpdates>
+    <Hospital:hasHistoryUpdates>
+      <Hospital:HistoryUpdate rdf:ID="HistoryUpdate102">
+        <Hospital:theDoctorComments rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >It's not good...</Hospital:theDoctorComments>
+        <Hospital:hasUpdateDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+        >2015-10-10T09:00:00</Hospital:hasUpdateDate>
+        <Hospital:hasAffiliatedDepart rdf:resource="#_Nephrology"/>
+        <Hospital:hasAffiliateDoctor rdf:resource="#Doctor101"/>
+        <Hospital:hasHistoryUpdateID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >HistoryUpdate102</Hospital:hasHistoryUpdateID>
+        <Hospital:hasMedicalCase rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Kidney stones</Hospital:hasMedicalCase>
+        <Hospital:hasPrescription>
+          <Hospital:Prescription rdf:ID="Prescription_2">
+            <Hospital:givenPillName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Panadol</Hospital:givenPillName>
+            <Hospital:givenInstructions rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >2_per_day</Hospital:givenInstructions>
+          </Hospital:Prescription>
+        </Hospital:hasPrescription>
+      </Hospital:HistoryUpdate>
+    </Hospital:hasHistoryUpdates>
+  </Hospital:Record>
+  <Hospital:Salary rdf:ID="Salary106">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary106</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor106">
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0151	</Hospital:personHasPhone>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Joe Powell	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0108	</Hospital:personHasPhone>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >230 Durham Road Allentown, PA 18102	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_Oncology"/>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor106</Hospital:personHasID>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Oncologist</Hospital:hasSpeciality>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0158	</Hospital:personHasPhone>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary116">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary116</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor116">
+        <Hospital:worksIn rdf:resource="#_Walk_in_Clinic"/>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor116</Hospital:personHasID>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >355 Cambridge Road Havertown, PA 19083	</Hospital:personHasAddress>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0110	</Hospital:personHasPhone>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Roy Johnson	</Hospital:personHasName>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >General Doctor</Hospital:hasSpeciality>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Bed rdf:ID="Wing103Ward102Room101Bed104">
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing103Ward102Room101Bed104</Hospital:infrastructureHasID>
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >1</Hospital:bedHasSize>
+  </Hospital:Bed>
+  <Hospital:Salary rdf:ID="Salary126">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary126</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse110">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse110</Hospital:personHasID>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0115	</Hospital:personHasPhone>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0182	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_General_Surgery"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >426 Forest Avenue South Richmond Hill, NY 11419	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Brandon Perez	</Hospital:personHasName>
+        <Hospital:nurseInspectWard rdf:resource="#Wing103Ward102"/>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Wing rdf:ID="Wing101">
+    <Hospital:wingHasWard rdf:resource="#Wing101Ward101"/>
+    <Hospital:wingHasDepartment rdf:resource="#_Microbiology"/>
+    <Hospital:wingHasDepartment rdf:resource="#_Nephrology"/>
+    <Hospital:wingHasDepartment rdf:resource="#_Walk_in_Clinic"/>
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing101</Hospital:infrastructureHasID>
+  </Hospital:Wing>
+  <Hospital:Salary rdf:ID="Salary135">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary135</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse119">
+        <Hospital:worksIn rdf:resource="#_General_Surgery"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >481 James Street Lenoir, NC 28645	</Hospital:personHasAddress>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse119</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Joseph Jones	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0103	</Hospital:personHasPhone>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary105">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1500.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor105">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor105</Hospital:personHasID>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >769 Sycamore Street Niles, MI 49120	</Hospital:personHasAddress>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Visiting</Hospital:hasRelantionshipType>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Microbiologist</Hospital:hasSpeciality>
+        <Hospital:worksIn rdf:resource="#_Microbiology"/>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Clayton Lynch	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0180	</Hospital:personHasPhone>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary105</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary115">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor115">
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Trainee</Hospital:hasRelantionshipType>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0136	</Hospital:personHasPhone>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >General Doctor</Hospital:hasSpeciality>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor115</Hospital:personHasID>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >311 Route 44 Stamford, CT 06902	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Evelyn Cooper	</Hospital:personHasName>
+        <Hospital:worksIn rdf:resource="#_Walk_in_Clinic"/>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary115</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary125">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse109">
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Emily Bell	</Hospital:personHasName>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse109</Hospital:personHasID>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >752 Water Street Milton, MA 02186	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_General_Surgery"/>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0130	</Hospital:personHasPhone>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary125</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary103">
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor103">
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nephrologist</Hospital:hasSpeciality>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Visiting</Hospital:hasRelantionshipType>
+        <Hospital:worksIn rdf:resource="#_Nephrology"/>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Ollie Holloway	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0154	</Hospital:personHasPhone>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor103</Hospital:personHasID>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >50 Water Street Gulfport, MS 39503	</Hospital:personHasAddress>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary103</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary117">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary117</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse101">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse101</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >James Harris	</Hospital:personHasName>
+        <Hospital:isEspeciallyTreats>
+          <Hospital:Patient rdf:ID="Patient104">
+            <Hospital:patientIsAttendedBy rdf:resource="#Doctor106"/>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >OutPatient</Hospital:isPatientType>
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Ruby Kelly	</Hospital:personHasName>
+            <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >739 Valley Drive Englewood, NJ 07631	</Hospital:personHasAddress>
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient104</Hospital:personHasID>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Female</Hospital:patientGender>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-11-11</Hospital:patientDateAdmitted>
+            <Hospital:patientDateDischarged rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-11-11</Hospital:patientDateDischarged>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >0</Hospital:patientAge>
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0108	</Hospital:personHasPhone>
+            <Hospital:patientIsAttendedIn rdf:resource="#_Nephrology"/>
+          </Hospital:Patient>
+        </Hospital:isEspeciallyTreats>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0147	</Hospital:personHasPhone>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0149	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_Microbiology"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >840 Willow Lane Milton, MA 02186	</Hospital:personHasAddress>
+        <Hospital:isInvolvedIn rdf:resource="#Patient101"/>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary118">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary118</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1500.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse102">
+        <Hospital:isInvolvedIn>
+          <Hospital:Patient rdf:ID="Patient107">
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient107</Hospital:personHasID>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >28</Hospital:patientAge>
+            <Hospital:patientIsAttendedIn rdf:resource="#_Nephrology"/>
+            <Hospital:patientIsAttendedBy rdf:resource="#Doctor101"/>
+            <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >99kg</Hospital:patientWeight>
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Nick Beam	</Hospital:personHasName>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-12-01</Hospital:patientDateAdmitted>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Male</Hospital:patientGender>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >VisitPatient</Hospital:isPatientType>
+          </Hospital:Patient>
+        </Hospital:isInvolvedIn>
+        <Hospital:isInvolvedIn>
+          <Hospital:Patient rdf:ID="Patient110">
+            <Hospital:patientHasAnAssignedBed rdf:resource="#Wing102Ward102Room102Bed101"/>
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Lula Green	</Hospital:personHasName>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Female</Hospital:patientGender>
+            <Hospital:patientIsAttendedBy rdf:resource="#Doctor107"/>
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0162	</Hospital:personHasPhone>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-12-03</Hospital:patientDateAdmitted>
+            <Hospital:patientIsAttendedIn rdf:resource="#_Oncology"/>
+            <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >328 2nd Street East Taylor, MI 48180	</Hospital:personHasAddress>
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient110</Hospital:personHasID>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >InPatient</Hospital:isPatientType>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >34</Hospital:patientAge>
+            <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >77Kg</Hospital:patientWeight>
+          </Hospital:Patient>
+        </Hospital:isInvolvedIn>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse102</Hospital:personHasID>
+        <Hospital:worksIn rdf:resource="#_Microbiology"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >921 Canterbury Road Massapequa, NY 11758	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0106	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Ann Perry	</Hospital:personHasPhone>
+        <Hospital:isEspeciallyTreats>
+          <Hospital:Patient rdf:ID="Patient108">
+            <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >13 Linda Lane Redondo Beach, CA 90278	</Hospital:personHasAddress>
+            <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >202-555-0126</Hospital:personHasPhone>
+            <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+            >2015-12-01</Hospital:patientDateAdmitted>
+            <Hospital:patientIsAttendedIn rdf:resource="#_Oncology"/>
+            <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >InPatient</Hospital:isPatientType>
+            <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >33</Hospital:patientAge>
+            <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Patient108</Hospital:personHasID>
+            <Hospital:patientHasAnAssignedBed rdf:resource="#Wing102Ward102Room101Bed101"/>
+            <Hospital:patientIsAttendedBy rdf:resource="#Doctor106"/>
+            <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Male</Hospital:patientGender>
+            <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >55kg</Hospital:patientWeight>
+            <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Joan Hughes	</Hospital:personHasName>
+          </Hospital:Patient>
+        </Hospital:isEspeciallyTreats>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary104">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary104</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff rdf:resource="#Doctor104"/>
+  </Hospital:Salary>
+  <Hospital:Wing rdf:ID="Wing103">
+    <Hospital:wingHasWard rdf:resource="#Wing103Ward102"/>
+    <Hospital:wingHasWard rdf:resource="#Wing103Ward101"/>
+    <Hospital:wingHasDepartment rdf:resource="#_Cardiology"/>
+    <Hospital:wingHasDepartment rdf:resource="#_General_Surgery"/>
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing103	</Hospital:infrastructureHasID>
+  </Hospital:Wing>
+  <Hospital:Salary rdf:ID="Salary141">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary141</Hospital:hasAccountID>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1800.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor121">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >924 2nd Street New Castle, PA 16101	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_Cardiology"/>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Gary Patterson	</Hospital:personHasName>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0154	</Hospital:personHasPhone>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Cardiologist</Hospital:hasSpeciality>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor121</Hospital:personHasID>
+        <Hospital:headOfDept rdf:resource="#_Cardiology"/>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary119">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse103">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >755 Colonial Avenue Astoria, NY 11102	</Hospital:personHasAddress>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0148	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_Microbiology"/>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse103</Hospital:personHasID>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Rachel Carter	</Hospital:personHasName>
+        <Hospital:nurseInspectWard rdf:resource="#Wing101Ward101"/>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary119</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary129">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary129</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse113">
+        <Hospital:worksIn rdf:resource="#_Walk_in_Clinic"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >32 5th Street Seymour, IN 47274	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Carol Carter	</Hospital:personHasName>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse113</Hospital:personHasID>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0174	</Hospital:personHasPhone>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Income rdf:ID="Bill101">
+    <Hospital:hasTotalBill rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >200.15</Hospital:hasTotalBill>
+    <Hospital:hasBilledPatient rdf:resource="#Patient101"/>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bill101</Hospital:hasAccountID>
+  </Hospital:Income>
+  <Hospital:Salary rdf:ID="Salary131">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary131</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse115">
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Juan Bailey		</Hospital:personHasName>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse115</Hospital:personHasID>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0182		</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_Oncology"/>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >776 Elm Street King Of Prussia, PA 19406	</Hospital:personHasAddress>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary101">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary101</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff rdf:resource="#Doctor101"/>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1500.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:MiscellaneousOrder rdf:ID="Order101">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Order101</Hospital:hasAccountID>
+    <Hospital:hasTotalCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >122.12</Hospital:hasTotalCost>
+    <Hospital:hasOrderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2015-10-01</Hospital:hasOrderDate>
+    <Hospital:hasAffiliatedDepartment rdf:resource="#_General_Surgery"/>
+  </Hospital:MiscellaneousOrder>
+  <Hospital:Patient rdf:ID="Patient103">
+    <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Patricia Henderson	</Hospital:personHasName>
+    <Hospital:patientDateAdmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2015-09-11</Hospital:patientDateAdmitted>
+    <Hospital:patientWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >65kg</Hospital:patientWeight>
+    <Hospital:patientAge rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >11</Hospital:patientAge>
+    <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >202-555-0116	</Hospital:personHasPhone>
+    <Hospital:isPatientType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OutPatient</Hospital:isPatientType>
+    <Hospital:patientIsAttendedBy rdf:resource="#Doctor111"/>
+    <Hospital:patientGender rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Female</Hospital:patientGender>
+    <Hospital:patientIsAttendedIn rdf:resource="#_Nephrology"/>
+    <Hospital:patientDateDischarged rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2015-09-11</Hospital:patientDateDischarged>
+    <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >25 Harrison Street Reno, NV 89523	</Hospital:personHasAddress>
+    <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Patient103</Hospital:personHasID>
+  </Hospital:Patient>
+  <Hospital:Salary rdf:ID="Salary140">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary140</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor120">
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor120</Hospital:personHasID>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Oncologist</Hospital:hasSpeciality>
+        <Hospital:headOfDept rdf:resource="#_Oncology"/>
+        <Hospital:worksIn rdf:resource="#_Oncology"/>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0111	</Hospital:personHasPhone>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >309 Aspen Drive West Roxbury, MA 02132	</Hospital:personHasAddress>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Brandon Smith	</Hospital:personHasName>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1800.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Salary rdf:ID="Salary130">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary130</Hospital:hasAccountID>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Nurse rdf:ID="Nurse114">
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >840 Augusta Drive Torrance, CA 90505	</Hospital:personHasAddress>
+        <Hospital:worksIn rdf:resource="#_Nephrology"/>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0174	</Hospital:personHasPhone>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Mary Clark	</Hospital:personHasName>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nurse114</Hospital:personHasID>
+      </Hospital:Nurse>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >900.0</Hospital:hasPaymentAmount>
+  </Hospital:Salary>
+  <Hospital:Income rdf:ID="Bill102">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bill102</Hospital:hasAccountID>
+    <Hospital:hasTotalBill rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >140.0</Hospital:hasTotalBill>
+    <Hospital:hasBilledPatient rdf:resource="#Patient102"/>
+  </Hospital:Income>
+  <Hospital:Salary rdf:ID="Salary102">
+    <Hospital:hasPaymentAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1200.0</Hospital:hasPaymentAmount>
+    <Hospital:hasAffiliatedStaff>
+      <Hospital:Doctor rdf:ID="Doctor102">
+        <Hospital:isEspeciallyInvolvedIn rdf:resource="#Patient105"/>
+        <Hospital:personHasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Jenna Floyd	</Hospital:personHasName>
+        <Hospital:personHasAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >68 Spring Street Marysville, OH 43040	</Hospital:personHasAddress>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0122	</Hospital:personHasPhone>
+        <Hospital:personHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Doctor102</Hospital:personHasID>
+        <Hospital:hasSpeciality rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Nephrologist</Hospital:hasSpeciality>
+        <Hospital:personHasPhone rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >202-555-0101	</Hospital:personHasPhone>
+        <Hospital:worksIn rdf:resource="#_Nephrology"/>
+        <Hospital:hasRelantionshipType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Permanent</Hospital:hasRelantionshipType>
+      </Hospital:Doctor>
+    </Hospital:hasAffiliatedStaff>
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Salary102</Hospital:hasAccountID>
+  </Hospital:Salary>
+  <Hospital:MiscellaneousOrder rdf:ID="Order102">
+    <Hospital:hasAccountID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Order102</Hospital:hasAccountID>
+    <Hospital:hasTotalCost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >11000.2</Hospital:hasTotalCost>
+    <Hospital:hasAffiliatedDepartment rdf:resource="#_Cardiology"/>
+    <Hospital:hasOrderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2015-10-10</Hospital:hasOrderDate>
+  </Hospital:MiscellaneousOrder>
+  <Hospital:Bed rdf:ID="Wing102Ward102Room103Bed105">
+    <Hospital:infrastructureHasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Wing102Ward102Room103Bed105</Hospital:infrastructureHasID>
+    <Hospital:bedHasSize rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >1</Hospital:bedHasSize>
+  </Hospital:Bed>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.5, Build 663)  http://protege.stanford.edu -->
